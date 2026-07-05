@@ -1,0 +1,44 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# ── Environment / secrets ──────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Model weights ─────────────────────────────────────────────────────────────
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+# Use `/models/*` (anchored, not `models/`) so per-file `!/models/<name>`
+# allowlists below can re-include specific weights. Once a parent directory is
+# excluded with a trailing slash, git skips it entirely and `!` rules inside
+# have no effect. The leading `/` anchors to repo root, so nested vendored
+# `models/` directories (e.g. inside vendored CodeFormer) are unaffected.
+/models/*
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+/data
+/temp/jobs
+**/__pycache__/
+/**/__pycache__/
+app/__pycache__
+app/api_v2/__pycache__
+**/venv/
+/Nihaal/models
+/models
