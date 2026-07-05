@@ -6,7 +6,7 @@ from torchvision import transforms
 
 from app.dark.classes import RAGRetinexFormer
 from config import settings
-from RAG.similarity_search import find_similar_images
+# from RAG.similarity_search import find_similar_images  # ponytail: needs data/ (RESIDE-ITS/LOL/gopro/COCO, ~32GB) not present on this machine; uncomment when data/ is restored
 
 MODEL_WEIGHTS_PATH = str(settings.models_dir / "retinex_gan_8.pth")
 
@@ -33,13 +33,13 @@ model.eval()
 def load_reference_tensors(query_image, k=3):
     """Retrieve k well-lit reference images for the query (PIL image or path)."""
     ref_tensors = []
-    try:
-        for path, dataset, dist in find_similar_images(query_image, k=k):
-            img = Image.open(path).convert("RGB")
-            ref_tensors.append(resize_transform(img))
-            print(f"Retrieved: {path} | {dataset} | {dist}")
-    except Exception as e:
-        print(f"Similarity search failed: {e}")
+    # try:
+    #     for path, dataset, dist in find_similar_images(query_image, k=k):
+    #         img = Image.open(path).convert("RGB")
+    #         ref_tensors.append(resize_transform(img))
+    #         print(f"Retrieved: {path} | {dataset} | {dist}")
+    # except Exception as e:
+    #     print(f"Similarity search failed: {e}")
 
     if not ref_tensors:
         return torch.zeros(1, 1, 3, IMAGE_SIZE, IMAGE_SIZE).to(DEVICE)

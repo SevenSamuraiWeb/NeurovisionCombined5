@@ -30,7 +30,8 @@ ENV/
 # excluded with a trailing slash, git skips it entirely and `!` rules inside
 # have no effect. The leading `/` anchors to repo root, so nested vendored
 # `models/` directories (e.g. inside vendored CodeFormer) are unaffected.
-/models/*
+ /models/*
+!/models/*.pth
 
 # ── Data ──────────────────────────────────────────────────────────────────────
 /data
@@ -41,4 +42,4 @@ app/__pycache__
 app/api_v2/__pycache__
 **/venv/
 /Nihaal/models
-/models
+
